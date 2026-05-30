@@ -121,10 +121,10 @@
             transform: scale(1.08);
         }
 
-        /* Hero Section */
+        /* Hero Section - Imagen de Portada Local Vinculada */
         .hero {
             height: calc(100vh - 116px);
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1200') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('hero-bg.jpg') no-repeat center center/cover;
             color: white;
             display: flex;
             flex-direction: column;
@@ -212,18 +212,23 @@
             transform: translateY(-5px);
         }
 
-        .image-placeholder {
+        /* Contenedor de Imagen de cada producto */
+        .product-img-wrapper {
             width: 100%;
             height: 380px;
+            overflow: hidden;
             background-color: #f4f4f4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
         }
 
         .product-info {
@@ -270,7 +275,7 @@
             background-color: #1ebd58;
         }
 
-        /* NUEVA SECCIÓN: Banner / Slider de Academic */
+        /* NUEVA SECCIÓN: Banner de Academic */
         .academic-section {
             padding: 40px 5% 80px;
         }
@@ -289,12 +294,12 @@
             transform: scale(1.01);
         }
 
-        /* Aquí va la imagen larga o maqueta que subas */
+        /* Imagen de Banner Educativo Local Vinculada */
         .academic-banner-img {
             width: 100%;
             height: auto;
             min-height: 350px;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('banner-academic.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -390,7 +395,7 @@
             .hero { height: calc(100vh - 116px); }
             .hero h1 { font-size: 2.5rem; }
             .grid { grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 30px; }
-            .image-placeholder { height: 260px; }
+            .product-img-wrapper { height: 260px; }
             .product-title { font-size: 15px; }
             .section-title { font-size: 1.6rem; }
             .section-subtitle { font-size: 12px; margin-bottom: 20px; }
@@ -439,7 +444,9 @@
         <div class="grid">
             
             <div class="product-card">
-                <div class="image-placeholder">Men Buzo Baggy</div>
+                <div class="product-img-wrapper">
+                    <img src="producto-buzo-baggy.jpg" alt="Men Buzo Baggy" class="product-img">
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Men Buzo Baggy</h3>
                     <p class="product-desc">Corte ancho, estilo urbano relajado y máxima comodidad.</p>
@@ -450,7 +457,9 @@
             </div>
 
             <div class="product-card">
-                <div class="image-placeholder">Men Buzo Boca Recta</div>
+                <div class="product-img-wrapper">
+                    <img src="producto-buzo-boca-recta.jpg" alt="Men Buzo con Boca Recta" class="product-img">
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Men Buzo con Boca Recta</h3>
                     <p class="product-desc">Caída clásica recta, ideal para combinar con tus mejores zapatillas.</p>
@@ -461,7 +470,9 @@
             </div>
 
             <div class="product-card">
-                <div class="image-placeholder">Men Short Deportivo</div>
+                <div class="product-img-wrapper">
+                    <img src="producto-short-deportivo.jpg" alt="Men Short Deportivo" class="product-img">
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Men Short Deportivo</h3>
                     <p class="product-desc">Corte ergonómico pensado para entrenar o un outfit deportivo activo.</p>
@@ -478,7 +489,9 @@
         <div class="grid">
             
             <div class="product-card">
-                <div class="image-placeholder">Men Short Casual</div>
+                <div class="product-img-wrapper">
+                    <img src="producto-short-casual.jpg" alt="Men Short Casual" class="product-img">
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Men Short Casual</h3>
                     <p class="product-desc">Confeccionado en 100% algodón, comodidad premium para salidas casuales.</p>
@@ -489,7 +502,9 @@
             </div>
 
             <div class="product-card">
-                <div class="image-placeholder">Short Playero Nova</div>
+                <div class="product-img-wrapper">
+                    <img src="producto-short-nova.jpg" alt="Men Short Playero Material Nova" class="product-img">
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Men Short Playero (Material Nova)</h3>
                     <p class="product-desc">Diseño ligero de rápido secado en tela premium Nova, perfecto para el verano.</p>
@@ -500,7 +515,9 @@
             </div>
 
             <div class="product-card">
-                <div class="image-placeholder">Short Playero Tela Mojada</div>
+                <div class="product-img-wrapper">
+                    <img src="producto-short-tela-mojada.jpg" alt="Men Short Playero Tela Mojada" class="product-img">
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Men Short Playero (Tela Mojada)</h3>
                     <p class="product-desc">Estilo veraniego con acabado textil suave y alta resistencia al agua.</p>
@@ -522,7 +539,7 @@
             <div class="academic-banner-img">
                 <h3>Buzos Educativos Personalizados</h3>
                 <p>Confeccionamos buzos escolares e institucionales con materiales de alta duración. Adaptamos los diseños según los colores oficiales de tu colegio o institución académica en Lima. Disponibles en cortes Clásico, Pitillo o Recto.</p>
-                <a href="https://wa.me/51999999999?text=Hola%20Creat%20Barrios,%20deseo%20cotizar%20o%20consultar%20por%20los%20Buzos%20Educativos%20/ %20Academic%20Essentials" class="btn-academic-wa" target="_blank">
+                <a href="https://wa.me/51999999999?text=Hola%20Creat%20Barrios,%20deseo%20cotizar%20o%20consultar%20por%20los%20Buzos%20Educativos%20/%20Academic%20Essentials" class="btn-academic-wa" target="_blank">
                     <i class="fab fa-whatsapp" style="color: #25D366; font-size: 18px;"></i> Cotizar por WhatsApp
                 </a>
             </div>

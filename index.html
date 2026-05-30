@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creat Barrios | Tienda Oficial</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        /* Importar tipografía moderna urbana */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #111111;
+            scroll-behavior: smooth;
+        }
+
+        /* Announcement Bar con transición suave uno por uno */
+        .announcement-bar {
+            background-color: #111111;
+            color: #ffffff;
+            position: relative;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 1001;
+        }
+
+        .announcement-text {
+            position: absolute;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            white-space: nowrap;
+            animation: rotateAnnouncements 12s infinite ease-in-out;
+        }
+
+        .announcement-text:nth-child(1) { animation-delay: 0s; }
+        .announcement-text:nth-child(2) { animation-delay: 4s; }
+        .announcement-text:nth-child(3) { animation-delay: 8s; }
+
+        @keyframes rotateAnnouncements {
+            0% { opacity: 0; transform: translateY(10px); }
+            5% { opacity: 1; transform: translateY(0); }
+            28% { opacity: 1; transform: translateY(0); }
+            33% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 0; }
+        }
+
+        /* Navbar Corregido */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            border-bottom: 1px solid #eeeeee;
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+        }
+
+        /* Menú empujado elegantemente a la derecha */
+        .menu {
+            display: flex;
+            gap: 25px;
+            margin-left: auto; 
+            margin-right: 40px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #111;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #555;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            color: #111111;
+        }
+
+        .nav-icons .material-symbols-outlined {
+            cursor: pointer;
+            font-size: 24px;
+            transition: transform 0.2s;
+        }
+
+        .nav-icons .material-symbols-outlined:hover {
+            transform: scale(1.08);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: calc(100vh - 116px);
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1200') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        .btn-cta {
+            padding: 15px 35px;
+            background-color: #ffffff;
+            color: #111111;
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            background-color: #111111;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(255,255,255,0.5);
+        }
+
+        /* Contenedor de Catálogo */
+        .catalog-container {
+            padding: 80px 5% 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            border-left: 5px solid #111;
+            padding-left: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+            padding-left: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Grilla de Productos */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 380px;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-info {
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: #111;
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        /* Botón de WhatsApp */
+        .btn-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            margin-top: auto;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebd58;
+        }
+
+        /* NUEVA SECCIÓN: Banner / Slider de Academic */
+        .academic-section {
+            padding: 40px 5% 80px;
+        }
+
+        .academic-banner-container {
+            width: 100%;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f4f4f4;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .academic-banner-container:hover {
+            transform: scale(1.01);
+        }
+
+        /* Aquí va la imagen larga o maqueta que subas */
+        .academic-banner-img {
+            width: 100%;
+            height: auto;
+            min-height: 350px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .academic-banner-img h3 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .academic-banner-img p {
+            font-size: 1rem;
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #dddddd;
+        }
+
+        .btn-academic-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #ffffff;
+            color: #111111;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 4px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-academic-wa:hover {
+            background-color: #25D366;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111111;
+            color: white;
+            padding: 50px 5% 30px;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin-bottom: 40px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+        }
+
+        .social-links a:hover {
+            color: #25D366;
+            transform: scale(1.15);
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu { display: none; }
+            .hero { height: calc(100vh - 116px); }
+            .hero h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 30px; }
+            .image-placeholder { height: 260px; }
+            .product-title { font-size: 15px; }
+            .section-title { font-size: 1.6rem; }
+            .section-subtitle { font-size: 12px; margin-bottom: 20px; }
+            .academic-banner-img { min-height: 400px; padding: 20px; }
+            .academic-banner-img h3 { font-size: 1.6rem; }
+            .academic-banner-img p { font-size: 14px; }
+            .social-links { gap: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar">
+        <div class="announcement-text">Envíos a todo Lima y provincias</div>
+        <div class="announcement-text">Lanzamiento Oficial - Colección 2026</div>
+        <div class="announcement-text">Pide directo a nuestro WhatsApp</div>
+    </div>
+
+    <nav>
+        <div class="logo-container">
+            <img src="isotipo-creat-barrios.png" alt="Isotipo Creat Barrios" class="logo-img">
+        </div>
+        
+        <div class="menu">
+            <a href="#urban-sport">Urban Sport</a>
+            <a href="#casual">Casual</a>
+            <a href="#academic">Academic</a>
+        </div>
+
+        <div class="nav-icons">
+            <span class="material-symbols-outlined">search</span>
+            <span class="material-symbols-outlined">shopping_cart</span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>CREAT BARRIOS</h1>
+        <p>Ropa urbana con identidad de calle</p>
+        <a href="#urban-sport" class="btn-cta">Ver Colecciones</a>
+    </section>
+
+    <main class="catalog-container">
+        
+        <h2 id="urban-sport" class="section-title">Urban Sport</h2>
+        <p class="section-subtitle">Estilo urbano con máxima comodidad para el día a día</p>
+        <div class="grid">
+            
+            <div class="product-card">
+                <div class="image-placeholder">Men Buzo Baggy</div>
+                <div class="product-info">
+                    <h3 class="product-title">Men Buzo Baggy</h3>
+                    <p class="product-desc">Corte ancho, estilo urbano relajado y máxima comodidad.</p>
+                    <a href="https://wa.me/51999999999?text=Hola%20Creat%20Barrios,%20deseo%20consultar%20disponibilidad%20del%20Men%20Buzo%20Baggy" class="btn-whatsapp" target="_blank">
+                        Consultar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="image-placeholder">Men Buzo Boca Recta</div>
+                <div class="product-info">
+                    <h3 class="product-title">Men Buzo con Boca Recta</h3>
+                    <p class="product-desc">Caída clásica recta, ideal para combinar con tus mejores zapatillas.</p>
+                    <a href="https://wa.me/51999999999?text=Hola%20Creat%20Barrios,%20deseo%20consultar%20disponibilidad%20del%20Men%20Buzo%20con%20Boca%20Recta" class="btn-whatsapp" target="_blank">
+                        Consultar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="image-placeholder">Men Short Deportivo</div>
+                <div class="product-info">
+                    <h3 class="product-title">Men Short Deportivo</h3>
+                    <p class="product-desc">Corte ergonómico pensado para entrenar o un outfit deportivo activo.</p>
+                    <a href="https://wa.me/51999999999?text=Hola%20Creat%20Barrios,%20deseo%20consultar%20disponibilidad%20del%20Men%20Short%20Deportivo" class="btn-whatsapp" target="_blank">
+                        Consultar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <h2 id="casual" class="section-title">Casual / Lifestyle</h2>
+        <p class="section-subtitle">Outfits versátiles para salir, viajar o ir a la playa</p>
+        <div class="grid">
+            
+            <div class="product-card">
+                <div class="image-placeholder">Men Short Casual</div>
+                <div class="product-info">
+                    <h3 class="product-title">Men Short Casual</h3>
+                    <p class="product-desc">Confeccionado en 100% algodón, comodidad premium para salidas casuales.</p>
+                    <a href="https://wa.me/51999999999?text=Hola%20Creat%20Barrios,%20deseo%20consultar%20disponibilidad%20del%20Men%20Short%20Casual%20de%20Algodon" class="btn-whatsapp" target="_blank">
+                        Consultar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="image-placeholder">Short Playero Nova</div>
+                <div class="product-info">
+                    <h3 class="product-title">Men Short Playero (Material Nova)</h3>
+                    <p class="product-desc">Diseño ligero de rápido secado en tela premium Nova, perfecto para el verano.</p>
+                    <a href="https://wa.me/51999999999?text=Hola%20Creat%20Barrios,%20deseo%20consultar%20por%20el%20Men%20Short%20Playero%20Material%20Nova" class="btn-whatsapp" target="_blank">
+                        Consultar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="image-placeholder">Short Playero Tela Mojada</div>
+                <div class="product-info">
+                    <h3 class="product-title">Men Short Playero (Tela Mojada)</h3>
+                    <p class="product-desc">Estilo veraniego con acabado textil suave y alta resistencia al agua.</p>
+                    <a href="https://wa.me/51999999999?text=Hola%20Creat%20Barrios,%20deseo%20consultar%20por%20el%20Men%20Short%20Playero%20Tela%20Mojada" class="btn-whatsapp" target="_blank">
+                        Consultar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <section id="academic" class="academic-section">
+        <h2 class="section-title">Academic Essentials</h2>
+        <p class="section-subtitle">Buzos institucionales personalizados en cualquier color</p>
+        
+        <div class="academic-banner-container">
+            <div class="academic-banner-img">
+                <h3>Buzos Educativos Personalizados</h3>
+                <p>Confeccionamos buzos escolares e institucionales con materiales de alta duración. Adaptamos los diseños según los colores oficiales de tu colegio o institución académica en Lima. Disponibles en cortes Clásico, Pitillo o Recto.</p>
+                <a href="https://wa.me/51999999999?text=Hola%20Creat%20Barrios,%20deseo%20cotizar%20o%20consultar%20por%20los%20Buzos%20Educativos%20/ %20Academic%20Essentials" class="btn-academic-wa" target="_blank">
+                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 18px;"></i> Cotizar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-brand">CREAT BARRIOS</div>
+        
+        <div class="social-links">
+            <a href="https://www.instagram.com/creatbarrios_?igsh=MXBhd3Z4c3pweGZ4Mw==" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@creat.barrios?_r=1&_t=ZS-96nkXwh8hrV" target="_blank" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://www.facebook.com/share/1E9FETTVvR/" target="_blank" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </div>
+
+        <div class="copyright">
+            &copy; 2026 Creat Barrios. Todos los derechos reservados. Marca e Isotipo Registrados ®.
+        </div>
+    </footer>
+
+</body>
+</html>

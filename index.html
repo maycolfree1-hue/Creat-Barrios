@@ -121,36 +121,35 @@
             transform: scale(1.08);
         }
 
-        /* Hero Section - Imagen de Portada Local Vinculada */
+        /* Hero Section - Aclarado y Alineado a la Derecha */
         .hero {
             height: calc(100vh - 116px);
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('hero-bg.jpg') no-repeat center center/cover;
+            /* Sombra reducida drásticamente (0.1 a 0.25) para aclarar el fondo */
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.25)), url('hero-bg.jpg') no-repeat center center/cover;
             color: white;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: flex-end; /* Alinea el contenido a la derecha */
             align-items: center;
-            text-align: center;
-            padding: 0 20px;
+            padding: 0 5%; /* Padding lateral alineado con el navbar */
+        }
+
+        .hero-content {
+            text-align: right; /* Texto alineado a la derecha */
+            max-width: 60%; /* Evita que el texto ocupe todo el ancho */
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 5.5rem; /* Texto lo suficientemente grande */
             font-weight: 900;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            letter-spacing: -2px; /* Espaciado más urbano y comprimido */
+            margin-bottom: 25px;
             text-transform: uppercase;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-            font-weight: 400;
+            line-height: 1.0; /* Interlineado ajustado para texto grande */
         }
 
         .btn-cta {
-            padding: 15px 35px;
+            display: inline-block; /* Asegura que el botón se alinee bien */
+            padding: 18px 45px;
             background-color: #ffffff;
             color: #111111;
             text-decoration: none;
@@ -158,12 +157,14 @@
             text-transform: uppercase;
             border-radius: 4px;
             transition: all 0.3s ease;
+            font-size: 15px;
+            letter-spacing: 1px;
         }
 
         .btn-cta:hover {
             background-color: #111111;
             color: #ffffff;
-            box-shadow: 0 0 15px rgba(255,255,255,0.5);
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
         }
 
         /* Contenedor de Catálogo */
@@ -273,6 +274,65 @@
 
         .btn-whatsapp:hover {
             background-color: #1ebd58;
+        }
+
+        /* SECCIÓN DE BENEFICIOS (NUEVA) */
+        .features-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            padding: 40px 0 20px 0;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            padding: 40px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background-color: #111111;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon-wrapper i {
+            color: #ffffff;
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 16px;
+            font-weight: 800;
+            color: #1c2c44;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 13.5px;
+            color: #666666;
+            line-height: 1.5;
+            max-width: 240px;
         }
 
         /* NUEVA SECCIÓN: Banner de Academic */
@@ -392,13 +452,21 @@
         /* Responsive */
         @media (max-width: 768px) {
             .menu { display: none; }
-            .hero { height: calc(100vh - 116px); }
-            .hero h1 { font-size: 2.5rem; }
+            .hero { height: calc(100vh - 116px); justify-content: center; padding: 0 20px; }
+            .hero-content { text-align: center; max-width: 100%; }
+            .hero h1 { font-size: 2.8rem; letter-spacing: -1px; }
+            .btn-cta { padding: 15px 30px; font-size: 14px; }
             .grid { grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 30px; }
             .product-img-wrapper { height: 260px; }
             .product-title { font-size: 15px; }
             .section-title { font-size: 1.6rem; }
             .section-subtitle { font-size: 12px; margin-bottom: 20px; }
+            .features-section { grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 20px 0; }
+            .feature-card { padding: 25px 15px; border-radius: 8px; }
+            .feature-icon-wrapper { width: 55px; height: 55px; margin-bottom: 15px; }
+            .feature-icon-wrapper i { font-size: 18px; }
+            .feature-card h3 { font-size: 13px; margin-bottom: 8px; }
+            .feature-card p { font-size: 11.5px; }
             .academic-banner-img { min-height: 400px; padding: 20px; }
             .academic-banner-img h3 { font-size: 1.6rem; }
             .academic-banner-img p { font-size: 14px; }
@@ -432,9 +500,10 @@
     </nav>
 
     <section class="hero">
-        <h1>CREAT BARRIOS</h1>
-        <p>Ropa urbana con identidad de calle</p>
-        <a href="#urban-sport" class="btn-cta">Ver Colecciones</a>
+        <div class="hero-content">
+            <h1>HECHO PARA<br>LOS DÍAS FRÍOS.<br>Y PARA DESTACAR.</h1>
+            <a href="#urban-sport" class="btn-cta">Ver Colecciones</a>
+        </div>
     </section>
 
     <main class="catalog-container">
@@ -529,6 +598,37 @@
 
         </div>
 
+        <div class="features-section">
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <h3>Asesoría Personalizada</h3>
+                <p>Te ayudamos a elegir el mejor producto para ti.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="fa-solid fa-shield-heart"></i>
+                </div>
+                <h3>Calidad y Garantía</h3>
+                <p>Productos 100% originales y garantizados.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <h3>Envíos a Todo el Perú</h3>
+                <p>Recibe tu pedido rápido y seguro en cualquier lugar.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="fa-solid fa-credit-card"></i>
+                </div>
+                <h3>Múltiples Métodos de Pago</h3>
+                <p>Tarjetas, transferencias y más opciones disponibles.</p>
+            </div>
+        </div>
+
     </main>
 
     <section id="academic" class="academic-section">
@@ -538,7 +638,7 @@
         <div class="academic-banner-container">
             <div class="academic-banner-img">
                 <h3>Buzos Educativos Personalizados</h3>
-                <p>Confeccionamos buzos escolares e institucionales con materiales de alta duración. Adaptamos los diseños según los colores oficiales de tu colegio o institución académica en Lima. Disponibles en cortes Clásico, Pitillo o Recto.</p>
+                <p>Confeccionamos buzos escolares e institucionales con materiales de alta duración. Adaptamos los diseños según los colores oficiales de tu colegio o institution académica en Lima. Disponibles en cortes Clásico, Pitillo o Recto.</p>
                 <a href="https://wa.me/51999999999?text=Hola%20Creat%20Barrios,%20deseo%20cotizar%20o%20consultar%20por%20los%20Buzos%20Educativos%20/%20Academic%20Essentials" class="btn-academic-wa" target="_blank">
                     <i class="fab fa-whatsapp" style="color: #25D366; font-size: 18px;"></i> Cotizar por WhatsApp
                 </a>
